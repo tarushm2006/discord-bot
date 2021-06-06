@@ -1,10 +1,21 @@
-import dotenv from "dotenv";
-import Discord from "discord.js";
+require("dotenv").config();
 
-dotenv.config();
-
+const Discord = require("discord.js");
 const bot = new Discord.Client();
+const general = new Discord.WebhookClient("851047200543735820","MXX5K_3SGNvwteuRMsHEc3v5bS1vqS1-CNSsWnE20MOGvtHgD9yq8gsY-6DTXs6MdWCE");
 bot.login(process.env.TOKEN);
+
+function morningMessage(){
+    let time = new Date();
+    let utc = time.getTime() + (time.getTimezoneOffset() * 60000);
+    let nd = new Date(utc + (3600000*+5.5));
+    let ist = nd.toLocaleTimeString();
+    if(ist === "7:00:00 AM"){
+       let embed = new Discord.MessageEmbed().setTitle("Good Morning!").setColor("1e90ff").setDescription("Good morning everyone! Have a good day ahead.").setFooter("From Cheems");
+        general.send(embed);
+    }
+}
+setInterval(morningMessage,1000);
 
 bot.on("ready",()=>{
     console.log(`Logged in as ${bot.user.tag}`)
@@ -22,7 +33,8 @@ bot.on("message",msg=>{
                 msg.reply("Hello!");
             }
             if(data.includes("bc") || data.includes("mc") || data.includes("bsdk") || data.includes("chutiya") || data.includes("chutiye")){
-                msg.reply("Baap hu tera bc");
+                const embed = new Discord.MessageEmbed().setTitle("Tu Chutiya").setColor("ff0000").setDescription("Tera baap hu bc");
+                msg.channel.send(embed);
             } 
         }else if(!msg.mentions.has(bot.user)){
             if(data.includes("pubg") || data.includes("pubgm")){
@@ -31,6 +43,7 @@ bot.on("message",msg=>{
             if(data.includes("bc") || data.includes("mc") || data.includes("bsdk") || data.includes("chutiya") || data.includes("chutiye") && msg.author !== bot.user.tag){
                 msg.reply("Wah bhaiya! full gaalibaazi")
             }
+            
         }   
     }
 });
