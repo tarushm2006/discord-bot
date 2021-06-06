@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const general = new Discord.WebhookClient("851047200543735820","MXX5K_3SGNvwteuRMsHEc3v5bS1vqS1-CNSsWnE20MOGvtHgD9yq8gsY-6DTXs6MdWCE");
+const general = new Discord.WebhookClient(process.env.WEBHOOK_ID,process.env.WEBHOOK_TOKEN);
 bot.login(process.env.TOKEN);
 
 function morningMessage(){
