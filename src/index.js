@@ -10,10 +10,6 @@ function morningMessage(){
     let utc = time.getTime() + (time.getTimezoneOffset() * 60000);
     let nd = new Date(utc + (3600000*+5.5));
     let ist = nd.toLocaleTimeString();
-    if(ist === "7:00:00 AM"){
-       let embed = new Discord.MessageEmbed().setTitle("Good Morning!").setColor("1e90ff").setDescription("Good morning everyone! Have a good day ahead.").setFooter("From Cheems");
-        general.send(embed);
-    }
 }
 setInterval(morningMessage,1000);
 
