@@ -7,6 +7,7 @@ bot.login(process.env.TOKEN);
 
 bot.on("ready",()=>{
     console.log(`Logged in as ${bot.user.tag}`)
+    document.getElementById("msg").innerHTML = `Logged in as ${bot.user.tag}`;
 });
 
 bot.on("messageDelete",arg=>{
